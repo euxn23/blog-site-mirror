@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --turbo",
     "build": "next build",
+    "prebuild": "tsx app/prebuild.ts",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,5 +19,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "prettier": "^2.8.8",
+    "tsx": "^3.12.7"
   }
 }
