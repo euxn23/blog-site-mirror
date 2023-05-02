@@ -1,0 +1,46 @@
+.entry {
+  display: flex;
+  flex-direction: column;
+
+  > .header {
+    margin: 24px 96px 24px 0;
+
+    > .text {
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+
+  > .container {
+    display: flex;
+    justify-content: space-between;
+
+    > .main {
+      width: var(--main-width);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      > .date {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      > .content {
+        background-color: #828888;
+        padding: 24px;
+        border-radius: 8px;
+
+        > .markdown {
+          h1, h2 {
+            margin: 24px 0 12px;
+          }
+          p {
+            margin: 4px 0;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+}

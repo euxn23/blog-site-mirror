@@ -1,0 +1,45 @@
+.entry_card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 420px;
+  height: 180px;
+  background-color: #bbc2bb;
+  border-radius: 12px;
+  padding: 24px;
+
+  &:focus, &:hover, &:active {
+    background-color: #aab2aa;
+  }
+
+  > .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    > .date {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    > .tags {
+        display: flex;
+
+      > .tag_item {
+        font-size: 12px;
+        background-color: #454c57;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  > .title {
+    font-weight: bold;
+    font-size: 22px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+}

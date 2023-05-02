@@ -1,0 +1,20 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+
+  > .main {
+    width: var(--main-width);
+    > .title {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    > .entries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+  }
+}

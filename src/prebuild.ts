@@ -1,16 +1,19 @@
 import fs from 'fs/promises'
 import path from 'path'
 import matter from 'gray-matter'
-import { EntryData } from './types'
+import { EntryData } from './app/types'
 
-async function main() {
-  const dirname = path.dirname(new URL(import.meta.url).pathname)
+type BuildEntryData = EntryData & { date: Date }
+
+const dirname = path.dirname(new URL(import.meta.url).pathname)
+
+async function getMarkdownEntries() {
   const entriesDir = path.join(dirname, 'entries')
 
   console.log(path.join(dirname, 'entries'))
   const markdownFiles = await fs.readdir(entriesDir)
-  const markdownEntries = (await Promise.all(
-    markdownFiles.map<Promise<EntryData>>(async (file) => {
+  const markdownEntries = await Promise.all(
+    markdownFiles.map<Promise<BuildEntryData>>(async (file) => {
       const filePath = path.join(entriesDir, file)
       const text = await fs.readFile(path.join(filePath), 'utf-8')
       const { data, content } = matter(text)
@@ -18,13 +21,21 @@ async function main() {
         content,
         date: data.date,
         title: data.title,
-        slug: file,
+        slug: path.parse(file).name,
         tags: data.tags,
       }
     })
-  )).sort((a, b) => b.date.getTime() - a.date.getTime())
+  )
 
-  const output = JSON.stringify(markdownEntries)
+  return markdownEntries
+}
+async function main() {
+  const markdownEntries = await getMarkdownEntries()
+  const entries = markdownEntries.sort(
+    (a, b) => b.date.getTime() - a.date.getTime()
+  )
+
+  const output = JSON.stringify(entries)
   await fs.writeFile(path.join(dirname, 'prebuilt.json'), output, 'utf-8')
 }
 

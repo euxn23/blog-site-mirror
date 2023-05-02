@@ -1,5 +1,5 @@
 export type EntryData = {
-  date: Date;
+  date: string;
   title: string;
   slug: string;
   /**
