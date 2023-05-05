@@ -35,7 +35,7 @@ const message = `count: ${count}`
 
 Ruby が元ネタなのか、 coffeescript では Ruby と同じ記法で `""` で囲い、 `#{}` を使って展開しています。
 
-```coffeescript
+```coffee
 message = "count: #{count}"
 ```
 
@@ -43,7 +43,7 @@ message = "count: #{count}"
 
 以下のように Class を定義しています。
 
-```coffeescript
+```coffee
 class Animal
   constructor: (@name) ->
 
