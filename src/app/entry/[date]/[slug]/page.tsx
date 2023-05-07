@@ -18,12 +18,7 @@ const components: Components = {
     const match = /language-(\w+)/.exec(className || '')
     return !inline && match ? (
       // @ts-expect-error Server Component
-      <Code
-        {...props}
-        theme={'one-dark-pro'}
-        lang={match[1]}
-        lineNumbers
-      >
+      <Code {...props} theme={'one-dark-pro'} lang={match[1]} lineNumbers>
         {String(children).replace(/\n$/, '')}
       </Code>
     ) : (
@@ -32,6 +27,18 @@ const components: Components = {
       </code>
     )
   },
+}
+
+export function generateMetadata({ params }: Props) {
+  const entry = entries.find((entry) => entry.slug === params.slug)
+  if (!entry) {
+    return {
+      title: '404 Not Found | blog.euxn.me',
+    }
+  }
+  return {
+    title: `${entry.title} | blog.euxn.me`,
+  }
 }
 export default function Entry({ params }: Props) {
   const entry = entries.find((entry) => entry.slug === params.slug)
