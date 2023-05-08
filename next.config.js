@@ -4,6 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   swcMinify: true,
+  output: 'export',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig

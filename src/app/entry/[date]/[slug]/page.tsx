@@ -66,3 +66,7 @@ export default function Entry({ params }: Props) {
     </div>
   )
 }
+
+export function generateStaticParams() {
+  return entries.map((entry) => ({ date: format(parseISO(entry.date), 'yyyy-MM-dd'), slug: entry.slug }))
+}
