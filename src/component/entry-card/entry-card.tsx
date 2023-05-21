@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export const EntryCard = ({ title, date, tags, slug }: EntryData) => (
   <Link
-    href={`/entry/${format(parseISO(date), 'yyyy-MM-dd')}/${slug}`}
+    href={`/entry/${slug}`}
     className="entry-card"
   >
     <div className="header">

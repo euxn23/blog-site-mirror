@@ -10,7 +10,6 @@ import {injectPageToMetadata} from "@/src/helper/inject-page-to-metadata"
 
 type Props = {
   params: {
-    date: string
     slug: string
   }
 }
