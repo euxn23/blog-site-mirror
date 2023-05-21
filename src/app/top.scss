@@ -1,9 +1,14 @@
 .top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 30px;
+  @media (width < 800px) {
+    flex-direction: column-reverse;
+  }
 
   > .main {
-    width: var(--main-width);
+    max-width: var(--main-width);
+    width: 100%;
     > .title {
       font-size: 14px;
       font-weight: bold;
@@ -13,7 +18,7 @@
     > .entries {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 30px;
       justify-content: space-between;
     }
   }

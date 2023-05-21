@@ -1,7 +1,7 @@
 import entries from '@/src/prebuilt.json'
 import { notFound } from 'next/navigation'
 import ReactMarkdown, { Components } from 'react-markdown'
-import styles from './entry.module.scss'
+import './entry.scss'
 import { Pickup } from '@/src/component/pickup/pickup'
 import { format, parseISO } from 'date-fns'
 import { Code } from 'bright'
@@ -49,17 +49,17 @@ export default function Entry({ params }: Props) {
     notFound()
   }
   return (
-    <div className={styles.entry}>
-      <div className={styles.header}>
-        <h1 className={styles.text}>{entry.title}</h1>
+    <div className="entry">
+      <div className="header">
+        <h1 className="text">{entry.title}</h1>
       </div>
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <div className={styles.date}>
+      <div className="container">
+        <main className="main">
+          <div className="date">
             {format(parseISO(entry.date), 'yyyy-MM-dd E.')}
           </div>
-          <div className={styles.content}>
-            <ReactMarkdown className={styles.markdown} components={components}>
+          <div className="content">
+            <ReactMarkdown className="markdown" components={components}>
               {entry.content}
             </ReactMarkdown>
           </div>

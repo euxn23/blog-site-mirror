@@ -1,9 +1,9 @@
-import styles from './pickup.module.scss'
+import './pickup.scss'
 
 export const Pickup = () => (
-  <div className={styles.pickup}>
-    <div className={styles.title}>Pickup</div>
-    <div className={styles.entries}>
+  <div className="pickup">
+    <div className="title">Pickup</div>
+    <div className="entries">
       Under Construction
     </div>
   </div>

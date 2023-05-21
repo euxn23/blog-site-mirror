@@ -1,10 +1,10 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-import styles from '@/src/app/layout.module.scss'
+import { Oswald } from 'next/font/google'
+import './layout.scss'
 import Link from 'next/link'
 import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
 
-const inter = Inter({ subsets: ['latin'] })
+const oswald = Oswald({ subsets: ['latin'] })
 
 export const metadata = injectPageToMetadata({})
 
@@ -15,15 +15,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
-        <div className={styles.layout}>
-          <div className={styles.top}>
-            <Link className={styles.header} href="/">
+      <body className={oswald.className}>
+        <div className="layout">
+          <div className="container">
+            <Link className="header" href="/">
               <img
-                className={styles.icon}
+                className="icon"
                 src="/icon.png"
               />
-              <div className={styles.title}>blog.euxn.me</div>
+              <div className="title">blog.euxn.me</div>
             </Link>
             {children}
           </div>
