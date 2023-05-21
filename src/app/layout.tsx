@@ -21,7 +21,7 @@ export default function RootLayout({
             <Link className={styles.header} href="/">
               <img
                 className={styles.icon}
-                src="https://github.com/euxn23.png"
+                src="/icon.png"
               />
               <div className={styles.title}>blog.euxn.me</div>
             </Link>
