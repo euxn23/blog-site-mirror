@@ -1,14 +1,12 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import styles from '@/src/app/layout.module.scss'
-import Link from "next/link"
+import Link from 'next/link'
+import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'blog.euxn.me',
-  description: 'A blog by @euxn23',
-}
+export const metadata = injectPageToMetadata({})
 
 export default function RootLayout({
   children,

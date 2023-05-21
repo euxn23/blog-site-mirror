@@ -5,6 +5,8 @@ import styles from './entry.module.scss'
 import { Pickup } from '@/src/component/pickup/pickup'
 import { format, parseISO } from 'date-fns'
 import { Code } from 'bright'
+import {Metadata} from "next"
+import {injectPageToMetadata} from "@/src/helper/inject-page-to-metadata"
 
 type Props = {
   params: {
@@ -29,16 +31,17 @@ const components: Components = {
   },
 }
 
-export function generateMetadata({ params }: Props) {
+export function generateMetadata({ params }: Props): Metadata {
   const entry = entries.find((entry) => entry.slug === params.slug)
   if (!entry) {
     return {
       title: '404 Not Found | blog.euxn.me',
     }
   }
-  return {
+  return injectPageToMetadata({
     title: `${entry.title} | blog.euxn.me`,
-  }
+    image: `https://ogp.worker.blog.euxn.me?title=${entry.title}`,
+  })
 }
 export default function Entry({ params }: Props) {
   const entry = entries.find((entry) => entry.slug === params.slug)
