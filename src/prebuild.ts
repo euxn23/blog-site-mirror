@@ -10,8 +10,8 @@ const dirname = path.dirname(new URL(import.meta.url).pathname)
 async function getMarkdownEntries() {
   const entriesDir = path.join(dirname, 'entries')
 
-  console.log(path.join(dirname, 'entries'))
-  const markdownFiles = await fs.readdir(entriesDir)
+  const dirFiles = await fs.readdir(entriesDir)
+  const markdownFiles = dirFiles.filter((file) => path.extname(file) === '.md')
   const markdownEntries = await Promise.all(
     markdownFiles.map<Promise<BuildEntryData>>(async (file) => {
       const filePath = path.join(entriesDir, file)

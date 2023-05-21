@@ -6,6 +6,8 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "prebuild": "tsx src/prebuild.ts",
+    "clone": "rm -rf src/entries && git clone $ENTRY_REPOSITORY src/entries",
+    "deploy": "npm run clone && npm run build",
     "start": "next start",
     "lint": "next lint"
   },
