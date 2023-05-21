@@ -39,6 +39,16 @@
             margin: 4px 0;
             line-height: 1.5;
           }
+          code {
+            padding: 0.2em 0.4em;
+            background: #6e6e6e;
+          }
+          pre {
+            code {
+              padding: 0;
+              background: inherit;
+            }
+          }
         }
       }
     }
