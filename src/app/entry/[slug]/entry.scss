@@ -36,11 +36,12 @@
 
         > .markdown {
           letter-spacing: 0.05em;
+          line-height: 32px;
           h1, h2 {
             margin: 24px 0 12px;
           }
           p {
-            margin: 4px 0;
+            margin: 8px 0;
             line-height: 1.5;
           }
           code {
