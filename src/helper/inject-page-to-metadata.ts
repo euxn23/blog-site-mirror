@@ -1,14 +1,16 @@
 import { Metadata } from 'next'
 
 export function injectPageToMetadata({
-  title,
+  title: title_,
   image,
 }: {
   title?: string
   image?: string
 }): Metadata {
+  const title = title_ ?? 'blog.euxn.me'
+
   return {
-    title: 'blog.euxn.me',
+    title,
     description: 'A blog by @euxn23',
     icons: '/favicon.ico',
     keywords: ['euxn23', 'blog', 'euxn.me', 'ユーン'],
@@ -18,7 +20,7 @@ export function injectPageToMetadata({
       minimumScale: 1,
     },
     openGraph: {
-      title: title ?? 'blog.euxn.me',
+      title: title,
       siteName: 'blog.euxn.me',
       description: 'A blog by @euxn23',
       type: 'website',
@@ -30,6 +32,7 @@ export function injectPageToMetadata({
     },
     twitter: {
       card: 'summary_large_image',
+      title: title,
       images: {
         url: image ?? 'https://ogp.blog.euxn.me/cache/og-image.png',
       },

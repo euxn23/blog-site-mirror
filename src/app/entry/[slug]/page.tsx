@@ -5,8 +5,8 @@ import './entry.scss'
 import { Pickup } from '@/src/component/pickup/pickup'
 import { format, parseISO } from 'date-fns'
 import { Code } from 'bright'
-import {Metadata} from "next"
-import {injectPageToMetadata} from "@/src/helper/inject-page-to-metadata"
+import { Metadata } from 'next'
+import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
 
 type Props = {
   params: {
@@ -70,5 +70,8 @@ export default function Entry({ params }: Props) {
 }
 
 export function generateStaticParams() {
-  return entries.map((entry) => ({ date: format(parseISO(entry.date), 'yyyy-MM-dd'), slug: entry.slug }))
+  return entries.map((entry) => ({
+    date: format(parseISO(entry.date), 'yyyy-MM-dd'),
+    slug: entry.slug,
+  }))
 }
