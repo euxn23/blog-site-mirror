@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { DESCRIPTION, KEYWORDS, OG_IMAGE_URL, SITE_NAME } from '@/src/env'
 
 export function injectPageToMetadata({
   title: title_,
@@ -11,9 +12,9 @@ export function injectPageToMetadata({
 
   return {
     title,
-    description: 'A blog by @euxn23',
+    description: DESCRIPTION,
     icons: '/favicon.ico',
-    keywords: ['euxn23', 'blog', 'euxn.me', 'ユーン'],
+    keywords: KEYWORDS?.split(','),
     viewport: {
       width: 'device-width',
       initialScale: 1,
@@ -21,11 +22,11 @@ export function injectPageToMetadata({
     },
     openGraph: {
       title: title,
-      siteName: 'blog.euxn.me',
-      description: 'A blog by @euxn23',
+      siteName: SITE_NAME,
+      description: DESCRIPTION,
       type: 'website',
       images: {
-        url: image ?? 'https://ogp.blog.euxn.me/cache/og-image.png',
+        url: image ?? OG_IMAGE_URL ?? '',
         width: 1200,
         height: 630,
       },
@@ -34,7 +35,7 @@ export function injectPageToMetadata({
       card: 'summary_large_image',
       title: title,
       images: {
-        url: image ?? 'https://ogp.blog.euxn.me/cache/og-image.png',
+        url: image ?? OG_IMAGE_URL ?? '',
       },
     },
   }

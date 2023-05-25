@@ -7,6 +7,7 @@ import { format, parseISO } from 'date-fns'
 import { Code } from 'bright'
 import { Metadata } from 'next'
 import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
+import { OGP_WORKER, SITE_NAME } from '@/src/env'
 
 type Props = {
   params: {
@@ -34,12 +35,12 @@ export function generateMetadata({ params }: Props): Metadata {
   const entry = entries.find((entry) => entry.slug === params.slug)
   if (!entry) {
     return {
-      title: '404 Not Found | blog.euxn.me',
+      title: `404 Not Found | ${SITE_NAME}`,
     }
   }
   return injectPageToMetadata({
-    title: `${entry.title} | blog.euxn.me`,
-    image: `https://ogp.worker.blog.euxn.me?title=${entry.title}`,
+    title: `${entry.title} | ${SITE_NAME}`,
+    image: `${OGP_WORKER}?title=${entry.title}`,
   })
 }
 export default function Entry({ params }: Props) {
