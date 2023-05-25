@@ -1,12 +1,26 @@
 import './globals.css'
-import { Oswald } from 'next/font/google'
+import { Oswald, Noto_Sans_JP } from 'next/font/google'
 import './layout.scss'
 import Link from 'next/link'
 import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTwitterSquare, faGithubSquare } from '@fortawesome/free-brands-svg-icons'
+import {
+  faTwitterSquare,
+  faGithubSquare,
+} from '@fortawesome/free-brands-svg-icons'
 
-const oswald = Oswald({ subsets: ['latin'] })
+const oswald = Oswald({
+  subsets: ['latin'],
+  preload: true,
+  display: 'swap',
+  variable: '--font-oswald',
+})
+const notoSansJP = Noto_Sans_JP({
+  subsets: ['latin'],
+  preload: true,
+  display: 'swap',
+  variable: '--font-noto-sans-jp',
+})
 
 export const metadata = injectPageToMetadata({})
 
@@ -17,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={oswald.className}>
+      <body className={`${oswald.variable} ${notoSansJP.variable}`}>
         <div className="layout">
           <div className="container">
             <Link className="header" href="/">
@@ -43,7 +57,10 @@ export default function RootLayout({
                 </a>
               </div>
               <div className="copylight">
-                <div className="euxn">©2023 SUZUKI Yuta.&nbsp;<span className="nao">designed by ENDO Nao.</span></div>
+                <div className="euxn">
+                  ©2023 SUZUKI Yuta.&nbsp;
+                  <span className="nao">designed by ENDO Nao.</span>
+                </div>
               </div>
             </div>
           </div>
