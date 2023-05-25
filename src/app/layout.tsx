@@ -8,6 +8,8 @@ import {
   faTwitterSquare,
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons'
+import Script from 'next/script'
+import { ANALYTICS_TOKEN } from '@/src/env'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -31,6 +33,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <Script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={ANALYTICS_TOKEN}
+      ></Script>
       <body className={`${oswald.variable} ${notoSansJP.variable}`}>
         <div className="layout">
           <div className="container">
