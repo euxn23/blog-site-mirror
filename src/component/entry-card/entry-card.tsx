@@ -4,14 +4,9 @@ import { format, parseISO } from 'date-fns'
 import Link from 'next/link'
 
 export const EntryCard = ({ title, date, tags, slug }: EntryData) => (
-  <Link
-    href={`/entry/${slug}`}
-    className="entry-card"
-  >
+  <Link href={`/entry/${slug}`} className="entry-card">
     <div className="header">
-      <div className="date">
-        {format(parseISO(date), 'yyyy-MM-dd E.')}
-      </div>
+      <div className="date">{format(parseISO(date), 'yyyy-MM-dd E.')}</div>
       {tags && (
         <div className="tags">
           {tags.map((tag) => (

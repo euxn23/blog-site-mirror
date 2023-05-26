@@ -1,34 +1,17 @@
 import entries from '@/src/prebuilt.json'
 import { notFound } from 'next/navigation'
-import ReactMarkdown, { Components } from 'react-markdown'
 import './entry.scss'
 import { Pickup } from '@/src/component/pickup/pickup'
 import { format, parseISO } from 'date-fns'
-import { Code } from 'bright'
 import { Metadata } from 'next'
 import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
 import { OGP_WORKER, SITE_NAME } from '@/src/env'
+import { Markdown } from '@/src/component/markdown/markdown'
 
 type Props = {
   params: {
     slug: string
   }
-}
-
-const components: Components = {
-  code({ node, inline, className, children, ...props }) {
-    const match = /language-(\w+)(:.+)?/.exec(className || '')
-    return !inline && match ? (
-      // @ts-expect-error Server Component
-      <Code {...props} theme={'one-dark-pro'} lang={match[1]} title={match[2]?.slice(1)} lineNumbers>
-        {String(children).replace(/\n$/, '')}
-      </Code>
-    ) : (
-      <code {...props} className={className}>
-        {children}
-      </code>
-    )
-  },
 }
 
 export function generateMetadata({ params }: Props): Metadata {
@@ -59,9 +42,7 @@ export default function Entry({ params }: Props) {
             {format(parseISO(entry.date), 'yyyy-MM-dd E.')}
           </div>
           <div className="content">
-            <ReactMarkdown className="markdown" components={components}>
-              {entry.content}
-            </ReactMarkdown>
+            <Markdown content={entry.content} />
           </div>
         </main>
         <Pickup />

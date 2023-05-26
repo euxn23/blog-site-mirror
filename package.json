@@ -27,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "react-markdown": "^8.0.7",
+    "react-twitter-embed": "^4.0.4",
     "sass": "^1.62.1",
     "typescript": "5.0.4"
   },

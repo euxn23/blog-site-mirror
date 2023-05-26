@@ -33,38 +33,6 @@
         padding: 24px;
         border-radius: 8px;
         border: 1px solid #454c57;
-
-        > .markdown {
-          letter-spacing: 0.05em;
-          line-height: 32px;
-          h1, h2 {
-            margin: 24px 0 12px;
-          }
-          p {
-            margin: 8px 0;
-            line-height: 1.5;
-          }
-          code {
-            padding: 0.2em 0.4em;
-            background: #6e6e6e;
-          }
-          pre {
-            code {
-              padding: 0;
-              background: inherit;
-              line-height: 1.2;
-            }
-          }
-          li {
-            margin-left: 24px;
-          }
-          a {
-            text-decoration: underline;
-          }
-          img {
-            max-width: 100%;
-          }
-        }
       }
     }
   }
