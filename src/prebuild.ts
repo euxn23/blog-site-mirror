@@ -11,7 +11,9 @@ async function getMarkdownEntries() {
   const entriesDir = path.join(dirname, 'entries')
 
   const dirFiles = await fs.readdir(entriesDir)
-  const markdownFiles = dirFiles.filter((file) => path.extname(file) === '.md')
+  const markdownFiles = dirFiles
+    .filter((file) => path.extname(file) === '.md')
+    .reverse() // 同一日付の通し番号を降順にするため
   const markdownEntries = await Promise.all(
     markdownFiles.map<Promise<BuildEntryData>>(async (file) => {
       const filePath = path.join(entriesDir, file)
