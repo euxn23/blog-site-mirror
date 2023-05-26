@@ -1,4 +1,4 @@
-import './globals.css'
+import './globals.scss'
 import { Oswald, Noto_Sans_JP } from 'next/font/google'
 import './layout.scss'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons'
 import Script from 'next/script'
-import { ANALYTICS_TOKEN } from '@/src/env'
+import { ANALYTICS_TOKEN, THEME } from '@/src/env'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" data-theme={THEME}>
       <Script
         defer
         src="https://static.cloudflareinsights.com/beacon.min.js"

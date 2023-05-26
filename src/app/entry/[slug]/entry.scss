@@ -29,10 +29,10 @@
       }
 
       > .content {
-        background-color: #272f39;
+        background-color: var(--card);
         padding: 24px;
         border-radius: 8px;
-        border: 1px solid #454c57;
+        border: 1px solid var(--card-hover);
       }
     }
   }

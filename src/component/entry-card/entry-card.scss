@@ -4,8 +4,8 @@
   gap: 8px;
   width: 480px;
   height: 210px;
-  background-color: #272f39;
-  border: 1px solid #454c57;
+  background-color: var(--card);
+  border: 1px solid var(--card-hover);
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 12px #00000080;
@@ -13,7 +13,7 @@
   &:focus,
   &:hover,
   &:active {
-    background-color: #454c57;
+    background-color: var(--card-hover);
   }
 
   > .header {
