@@ -8,7 +8,7 @@ export function injectPageToMetadata({
   title?: string
   image?: string
 }): Metadata {
-  const title = title_ ?? 'blog.euxn.me'
+  const title = title_ ?? SITE_NAME
 
   return {
     title,
