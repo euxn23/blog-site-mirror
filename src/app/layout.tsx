@@ -9,7 +9,7 @@ import {
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons'
 import Script from 'next/script'
-import { ANALYTICS_TOKEN, THEME } from '@/src/env'
+import {ANALYTICS_TOKEN, SITE_NAME, THEME} from '@/src/env'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -43,7 +43,7 @@ export default function RootLayout({
           <div className="container">
             <Link className="header" href="/">
               <img className="icon" src="/icon.png" />
-              <div className="title">blog.euxn.me</div>
+              <div className="title">${SITE_NAME}</div>
             </Link>
             {children}
             <div className="footer">
