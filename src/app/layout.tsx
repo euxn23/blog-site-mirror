@@ -43,7 +43,7 @@ export default function RootLayout({
           <div className="container">
             <Link className="header" href="/">
               <img className="icon" src="/icon.png" />
-              <div className="title">${SITE_NAME}</div>
+              <div className="title">{SITE_NAME}</div>
             </Link>
             {children}
             <div className="footer">
