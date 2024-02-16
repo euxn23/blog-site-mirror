@@ -33,11 +33,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" data-theme={THEME}>
-      <Script
-        defer
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon={ANALYTICS_TOKEN}
-      ></Script>
       <body className={`${oswald.variable} ${notoSansJP.variable}`}>
         <div className="layout">
           <div className="container">
