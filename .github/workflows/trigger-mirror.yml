@@ -1,0 +1,29 @@
+name: trigger-mirror
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  trigger-mirror:
+    if: github.repository == 'euxn23/blog-site'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+          repositories: "blog-site-mirror"
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'euxn23',
+              repo: 'blog-site-mirror',
+              workflow_id: 'run-mirror.yml',
+              ref: 'main'
+            })
