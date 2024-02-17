@@ -1,10 +1,13 @@
-name: run-mirror
+name: mirror
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  run-mirror:
-    if: github.repository == 'euxn23/blog-site-mirror'
+  mirror:
+    if: github.repository == 'euxn23/blog-site'
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -17,8 +20,9 @@ jobs:
           repositories: "blog-site-mirror"
       - uses: actions/checkout@v4
         with:
-          repository: euxn23/blog-site
           token: ${{ steps.app-token.outputs.token }}
       - run: |
           git remote add mirror https://github.com/euxn23/blog-site-mirror.git
-          git push mirror
+          git fetch mirror
+          git branch -a
+          git push mirror maim -f
