@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { DESCRIPTION, KEYWORDS, OG_IMAGE_URL, SITE_NAME } from '@/src/env'
+import { DESCRIPTION, KEYWORDS, OG_IMAGE_URL, SITE_NAME } from '@/src/config'
 
 export function injectPageToMetadata({
   title: title_,

@@ -8,8 +8,7 @@ import {
   faTwitterSquare,
   faGithubSquare,
 } from '@fortawesome/free-brands-svg-icons'
-import Script from 'next/script'
-import {ANALYTICS_TOKEN, SITE_NAME, THEME} from '@/src/env'
+import { SITE_NAME, THEME } from '@/src/config'
 
 const oswald = Oswald({
   subsets: ['latin'],
@@ -60,7 +59,7 @@ export default function RootLayout({
               </div>
               <div className="copylight">
                 <div className="euxn">
-                  ©2023 SUZUKI Yuta.&nbsp;
+                  ©2024 SUZUKI Yuta.&nbsp;
                   <span className="nao">designed by ENDO Nao.</span>
                 </div>
               </div>

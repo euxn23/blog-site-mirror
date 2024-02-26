@@ -5,7 +5,7 @@ import { Pickup } from '@/src/component/pickup/pickup'
 import { format, parseISO } from 'date-fns'
 import { Metadata } from 'next'
 import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
-import { OGP_WORKER, SITE_NAME } from '@/src/env'
+import { OGP_WORKER, SITE_NAME } from '@/src/config'
 import { Markdown } from '@/src/component/markdown/markdown'
 
 type Props = {

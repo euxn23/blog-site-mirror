@@ -8,7 +8,7 @@ type BuildEntryData = EntryData & { date: Date }
 const dirname = path.dirname(new URL(import.meta.url).pathname)
 
 async function getMarkdownEntries() {
-  const entriesDir = path.join(dirname, 'entries')
+  const entriesDir = path.join(dirname, '..', 'entry-repo', 'entries')
 
   const dirFiles = await fs.readdir(entriesDir)
   const markdownFiles = dirFiles
