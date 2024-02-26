@@ -1,9 +1,8 @@
-import Image from 'next/image'
-import entries from '@/src/prebuilt.json'
+import data from '@/src/prebuilt.json'
 import { EntryCard } from '@/src/component/entry-card/entry-card'
 import './top.scss'
 import React from 'react'
-import { Pickup } from '@/src/component/pickup/pickup'
+import { OtherWorks } from '@/src/component/other-works/other-works'
 
 export default function Top() {
   return (
@@ -11,12 +10,12 @@ export default function Top() {
       <main className="main">
         <div className="title">Newest</div>
         <div className="entries">
-          {entries.map((entry) => (
+          {data.entries.map((entry) => (
             <EntryCard {...entry} key={entry.slug} />
           ))}
         </div>
       </main>
-      <Pickup />
+      <OtherWorks />
     </div>
   )
 }

@@ -1,8 +1,8 @@
-import entries from '@/src/prebuilt.json'
+import data from '@/src/prebuilt.json'
 import { notFound } from 'next/navigation'
 import './entry.scss'
-import { Pickup } from '@/src/component/pickup/pickup'
-import { format, parseISO } from 'date-fns'
+import { OtherWorks } from '@/src/component/other-works/other-works'
+import { format, parse } from 'date-fns'
 import { Metadata } from 'next'
 import { injectPageToMetadata } from '@/src/helper/inject-page-to-metadata'
 import { OGP_WORKER, SITE_NAME } from '@/src/config'
@@ -15,7 +15,7 @@ type Props = {
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const entry = entries.find((entry) => entry.slug === params.slug)
+  const entry = data.entries.find((entry) => entry.slug === params.slug)
   if (!entry) {
     return {
       title: `404 Not Found | ${SITE_NAME}`,
@@ -27,7 +27,7 @@ export function generateMetadata({ params }: Props): Metadata {
   })
 }
 export default function Entry({ params }: Props) {
-  const entry = entries.find((entry) => entry.slug === params.slug)
+  const entry = data.entries.find((entry) => entry.slug === params.slug)
   if (!entry) {
     notFound()
   }
@@ -38,22 +38,20 @@ export default function Entry({ params }: Props) {
       </div>
       <div className="container">
         <main className="main">
-          <div className="date">
-            {format(parseISO(entry.date), 'yyyy-MM-dd E.')}
-          </div>
+          <div className="date">{format(parse(entry.date, 'yyyy-MM-dd', new Date()), 'yyyy-MM-dd E.')}</div>
           <div className="content">
             <Markdown content={entry.content} />
           </div>
         </main>
-        <Pickup />
+        <OtherWorks />
       </div>
     </div>
   )
 }
 
 export function generateStaticParams() {
-  return entries.map((entry) => ({
-    date: format(parseISO(entry.date), 'yyyy-MM-dd'),
+  return data.entries.map((entry) => ({
+    date: entry.date,
     slug: entry.slug,
   }))
 }

@@ -9,7 +9,7 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "prebuild": "tsx src/prebuild.ts",
-    "clone": "rm -rf entry-repo && source .env && git clone $ENTRY_REPOSITORY entry-repo",
+    "clone": "rm -rf entry-repo && git clone $ENTRY_REPOSITORY entry-repo",
     "postclone": "npm run prebuild",
     "deploy": "npm run clone && npm run build",
     "start": "next start",

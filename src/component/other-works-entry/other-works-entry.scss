@@ -1,0 +1,10 @@
+.other-works-entry {
+  font-size: 12px;
+  > .title-box {
+    display: flex;
+    flex-direction: column;
+    > .media {
+      align-self: end;
+    }
+  }
+}

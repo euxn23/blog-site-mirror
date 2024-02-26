@@ -1,7 +1,8 @@
 import fs from 'fs/promises'
 import path from 'path'
 import matter from 'gray-matter'
-import { EntryData } from './app/types'
+import { EntryData } from './types'
+import { getOtherWorks } from '@/entry-repo/other-works'
 
 type BuildEntryData = EntryData & { date: Date }
 
@@ -13,7 +14,8 @@ async function getMarkdownEntries() {
   const dirFiles = await fs.readdir(entriesDir)
   const markdownFiles = dirFiles
     .filter((file) => path.extname(file) === '.md')
-    .reverse() // 同一日付の通し番号を降順にするため
+    // 同一日付の通し番号を降順にするため
+    .reverse()
   const markdownEntries = await Promise.all(
     markdownFiles.map<Promise<BuildEntryData>>(async (file) => {
       const filePath = path.join(entriesDir, file)
@@ -33,11 +35,17 @@ async function getMarkdownEntries() {
 }
 async function main() {
   const markdownEntries = await getMarkdownEntries()
-  const entries = markdownEntries.sort(
-    (a, b) => b.date.getTime() - a.date.getTime()
-  )
+  const entries = markdownEntries
+    .sort((a, b) => b.date.getTime() - a.date.getTime())
+    .map((entry) => ({
+      ...entry,
+      date: `${entry.date.getFullYear()}-${entry.date.getMonth() + 1}-${entry.date.getDate()}`,
+    }))
 
-  const output = JSON.stringify(entries)
+  const output = JSON.stringify({
+    entries: entries,
+    otherWorks: await getOtherWorks(),
+  })
   await fs.writeFile(path.join(dirname, 'prebuilt.json'), output, 'utf-8')
 }
 
