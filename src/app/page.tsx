@@ -1,8 +1,7 @@
 import data from '@/src/prebuilt.json'
 import { EntryCard } from '@/src/component/entry-card/entry-card'
-import './top.scss'
-import React from 'react'
 import { OtherWorks } from '@/src/component/other-works/other-works'
+import './top.scss'
 
 export default function Top() {
   return (

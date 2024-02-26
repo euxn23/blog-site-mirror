@@ -1,12 +1,12 @@
 import { OtherWorks } from '@/src/types'
-import './other-works-entry.scss'
+import './other-work.scss'
 import { format, parse } from 'date-fns'
 
 type Props = OtherWorks
-export function OtherWorksEntry({ date, title, media, url }: Props) {
+export function OtherWork({ date, title, media, url }: Props) {
   return (
     <a href={url} target="_blank">
-      <div className="other-works-entry">
+      <div className="other-work">
         <div className="date">{format(parse(date, 'yyyy-MM-dd', new Date()), 'yyyy-MM-dd E.')}</div>
         <div className="title-box">
           <div className="title">{title}</div>
