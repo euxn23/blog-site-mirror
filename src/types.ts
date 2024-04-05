@@ -1,5 +1,6 @@
 export type Config = {
   SITE_NAME: string
+  SITE_URL: string
   OGP_WORKER: string
   OG_IMAGE_URL: string
   DESCRIPTION: string
